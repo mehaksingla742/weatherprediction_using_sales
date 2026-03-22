@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Weather Prediction System</title>
+
+<style>
+
+body{
+
+font-family:Arial;
+
+background:linear-gradient(to right,#74ebd5,#acb6e5);
+
+text-align:center;
+
+}
+
+.container{
+
+background:white;
+
+width:520px;
+
+margin:auto;
+
+padding:25px;
+
+margin-top:30px;
+
+border-radius:10px;
+
+box-shadow:0 0 10px gray;
+
+}
+
+input{
+
+width:85%;
+
+padding:8px;
+
+margin:4px;
+
+border-radius:5px;
+
+border:1px solid gray;
+
+}
+
+button{
+
+background:#2ecc71;
+
+color:white;
+
+padding:10px;
+
+border:none;
+
+width:50%;
+
+margin-top:10px;
+
+border-radius:5px;
+
+cursor:pointer;
+
+}
+
+button:hover{
+
+background:#27ae60;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Weather Prediction using Sales</h1>
+
+<form action="/predict" method="post">
+
+<input name="umbrella_sales" placeholder="Umbrella Sales">
+
+<input name="raincoat_sales" placeholder="Raincoat Sales">
+
+<input name="icecream_sales" placeholder="Ice Cream Sales">
+
+<input name="cold_drink_sales" placeholder="Cold Drink Sales">
+
+<input name="sunscreen_sales" placeholder="Sunscreen Sales">
+
+<input name="jacket_sales" placeholder="Jacket Sales">
+
+<input name="heater_sales" placeholder="Heater Sales">
+
+<input name="sweater_sales" placeholder="Sweater Sales">
+
+<input name="gloves_sales" placeholder="Gloves Sales">
+
+<input name="tea_sales" placeholder="Tea Sales">
+
+<input name="coffee_sales" placeholder="Coffee Sales">
+
+<input name="soup_sales" placeholder="Soup Sales">
+
+<input name="snacks_sales" placeholder="Snacks Sales">
+
+<input name="bread_sales" placeholder="Bread Sales">
+
+<br>
+
+<button type="submit">
+
+Predict Weather
+
+</button>
+
+</form>
+
+<h2>
+
+{{ prediction_text }}
+
+</h2>
+
+</div>
+
+</body>
+
+</html>

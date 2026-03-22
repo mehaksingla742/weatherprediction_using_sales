@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Weather Prediction</title>
+
+<style>
+
+body{
+
+font-family:Arial;
+
+background:#f4f6f7;
+
+text-align:center;
+
+}
+
+.container{
+
+background:white;
+
+width:500px;
+
+margin:auto;
+
+padding:20px;
+
+margin-top:40px;
+
+border-radius:10px;
+
+box-shadow:0 0 10px gray;
+
+}
+
+input{
+
+width:80%;
+
+padding:8px;
+
+margin:4px;
+
+}
+
+button{
+
+background:#3498db;
+
+color:white;
+
+padding:10px;
+
+border:none;
+
+width:50%;
+
+margin-top:10px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Weather Prediction Model</h1>
+
+<form action="/predict" method="post">
+
+<input name="ice_cream" placeholder="Ice Cream Sales">
+
+<input name="cold_drink" placeholder="Cold Drink Sales">
+
+<input name="hot_coffee" placeholder="Hot Coffee Sales">
+
+<input name="tea" placeholder="Tea Sales">
+
+<input name="soup" placeholder="Soup Sales">
+
+<input name="umbrella" placeholder="Umbrella Sales">
+
+<input name="jacket" placeholder="Jacket Sales">
+
+<input name="fan" placeholder="Fan Sales">
+
+<input name="heater" placeholder="Heater Sales">
+
+<input name="water_bottle" placeholder="Water Bottle">
+
+<input name="raincoat" placeholder="Raincoat">
+
+<input name="sunglasses" placeholder="Sunglasses">
+
+<input name="cap" placeholder="Cap">
+
+<input name="gloves" placeholder="Gloves">
+
+<br>
+
+<button type="submit">
+
+Predict Weather
+
+</button>
+
+</form>
+
+<h2>
+
+{{ prediction_text }}
+
+</h2>
+
+</div>
+
+</body>
+
+</html>
