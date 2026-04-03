@@ -5,64 +5,73 @@ import pandas as pd
 
 app = Flask(__name__)
 
+# Load trained components
 model = joblib.load("weather_model.pkl")
-
 scaler = joblib.load("scaler.pkl")
-
 le = joblib.load("label_encoder.pkl")
 
-
+# Feature columns (must match training order)
 columns = [
-
-'umbrella_sales',
-'raincoat_sales',
-'icecream_sales',
-'cold_drink_sales',
-'sunscreen_sales',
-'jacket_sales',
-'heater_sales',
-'sweater_sales',
-'gloves_sales',
-'tea_sales',
-'coffee_sales',
-'soup_sales',
-'snacks_sales',
-'bread_sales'
-
+    'umbrella_sales',
+    'raincoat_sales',
+    'icecream_sales',
+    'cold_drink_sales',
+    'sunscreen_sales',
+    'jacket_sales',
+    'heater_sales',
+    'sweater_sales',
+    'gloves_sales',
+    'tea_sales',
+    'coffee_sales',
+    'soup_sales',
+    'snacks_sales',
+    'bread_sales'
 ]
 
-
+# Home route
 @app.route('/')
-
 def home():
-
     return render_template("index.html")
 
 
-@app.route('/predict',methods=['POST'])
-
+# Prediction route
+@app.route('/predict', methods=['POST'])
 def predict():
+    try:
+        values = []
 
-    values = []
+        # Get input values safely
+        for col in columns:
+            val = request.form.get(col)
 
-    for col in columns:
+            if val is None or val.strip() == "":
+                return render_template(
+                    "index.html",
+                    prediction_text="⚠️ Please enter all values"
+                )
 
-        values.append(float(request.form[col]))
+            values.append(float(val))
 
-    df = pd.DataFrame([values],columns=columns)
+        # Convert to DataFrame
+        df = pd.DataFrame([values], columns=columns)
 
-    df = scaler.transform(df)
+        # Apply scaling (same as training)
+        df_scaled = scaler.transform(df.values)
 
-    prediction = model.predict(df)
+        # Predict
+        prediction = model.predict(df_scaled)
 
-    output = le.inverse_transform(prediction)
+        # Decode label
+        output = le.inverse_transform(prediction)
 
-    return render_template(
-        "index.html",
-        prediction_text="Predicted Weather: "+output[0]
-    )
+        result = "Predicted Weather: " + output[0]
+
+    except Exception as e:
+        result = f"Error: {str(e)}"
+
+    return render_template("index.html", prediction_text=result)
 
 
+# Run app
 if __name__ == "__main__":
-
     app.run(debug=True)
