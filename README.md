@@ -71,6 +71,7 @@ Machine Learning models used:
 
 * Decision Tree Classifier
 * Random Forest Classifier
+* KNN Algorithm
 
 ### 5 Model Evaluation
 
@@ -83,6 +84,11 @@ Performance evaluated using:
 ### 6 Prediction
 
 The model predicts weather based on new product sales input.
+
+#Screenshots of Project
+<img width="1920" height="849" alt="image" src="https://github.com/user-attachments/assets/322d78e9-ff6c-4e59-a88b-79facc925b54" />
+<img width="1914" height="868" alt="image" src="https://github.com/user-attachments/assets/fa20c5d5-8f18-4a09-91f0-c7705faba22f" />
+
 
 ## Technologies Used
 
